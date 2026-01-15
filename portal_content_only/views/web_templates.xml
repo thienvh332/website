@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Kencove (https://www.kencove.com).
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template id="web_frontend_layout_content_only" inherit_id="web.frontend_layout">
+        <xpath expr="//div[@id='wrapwrap']/header" position="before">
+            <t
+                t-set="content_only_param"
+                t-value="request.httprequest.args.get('content_only', '')"
+            />
+            <t
+                t-set="content_only_flag"
+                t-value="content_only_param.lower() in ('1', 'true')"
+            />
+            <t t-set="no_header" t-value="content_only_flag or no_header" />
+            <t t-set="no_footer" t-value="content_only_flag or no_footer" />
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Kencove (https://www.kencove.com).
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+    <record id="config_portal_content_only_toggle_enabled" model="ir.config_parameter">
+        <field name="key">portal_content_only.toggle_enabled</field>
+        <field name="value">False</field>
+    </record>
+</odoo>

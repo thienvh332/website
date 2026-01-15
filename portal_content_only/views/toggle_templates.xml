@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Kencove (https://www.kencove.com).
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template
+        id="content_only_toggle"
+        inherit_id="web.frontend_layout"
+        name="Content Only Toggle Button"
+    >
+        <xpath expr="//div[@id='wrapwrap']" position="inside">
+            <t
+                t-set="toggle_enabled"
+                t-value="request.env['ir.config_parameter'].sudo().get_param('portal_content_only.toggle_enabled', 'True')"
+            />
+            <t
+                t-if="toggle_enabled and toggle_enabled.lower() not in ('0', 'false') and 'content_only' in request.httprequest.args"
+            >
+                <t
+                    t-set="is_content_only"
+                    t-value="request.httprequest.args.get('content_only', '').lower() in ('1', 'true')"
+                />
+                <div
+                    t-attf-class="o_content_only_toggle #{'active' if is_content_only else ''}"
+                >
+                    <button
+                        type="button"
+                        class="o_content_only_toggle_btn"
+                        title="Toggle content only mode"
+                        t-attf-onclick="window.location.href='{{ request.httprequest.path }}?content_only={{ '0' if is_content_only else '1' }}'"
+                    >
+                        <i
+                            t-attf-class="fa #{'fa-eye-slash' if is_content_only else 'fa-eye'}"
+                        />
+                        <span class="o_toggle_tooltip">
+                            <t t-if="is_content_only">Show header/footer</t>
+                            <t t-else="">Hide header/footer</t>
+                        </span>
+                    </button>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>
