@@ -1,0 +1,91 @@
+/* Copyright 2026 Kencove (https://www.kencove.com).
+   License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). */
+
+.o_content_only_toggle {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1050;
+}
+
+.o_content_only_toggle_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 45px;
+    background: linear-gradient(135deg, #714b67, #8f5f82);
+    border: none;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.2);
+    transition: width 0.2s, background 0.2s;
+    padding: 0;
+}
+
+.o_content_only_toggle_btn:hover {
+    width: 45px;
+    background: linear-gradient(135deg, #8f5f82, #a87399);
+}
+
+.o_content_only_toggle_btn:hover .o_toggle_tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.o_content_only_toggle_btn .fa {
+    font-size: 18px;
+    color: white;
+}
+
+.o_toggle_tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #333;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s;
+    margin-right: 8px;
+}
+
+.o_toggle_tooltip::after {
+    content: "";
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: #333;
+    border-right: none;
+}
+
+.o_content_only_toggle.active .o_content_only_toggle_btn {
+    background: linear-gradient(135deg, #28a745, #34ce57);
+}
+
+.o_content_only_toggle.active .o_content_only_toggle_btn:hover {
+    background: linear-gradient(135deg, #34ce57, #48d868);
+}
+
+@media (max-width: 768px) {
+    .o_content_only_toggle {
+        top: 30%;
+    }
+
+    .o_content_only_toggle_btn {
+        width: 30px;
+        height: 50px;
+    }
+
+    .o_content_only_toggle_btn .fa {
+        font-size: 16px;
+    }
+}
